@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script>
+            function clickCounter() {
+              if (typeof(Storage) !== "undefined") {
+                if (sessionStorage.clickcount) {
+                  sessionStorage.clickcount = Number(sessionStorage.clickcount)*2;
+                } else {
+                  sessionStorage.clickcount = 1;
+                }
+                document.getElementById("result").innerHTML = "You have clicked the button " + sessionStorage.clickcount + " time(s) in this session.";
+              } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+              }
+            }
+            </script>
         <title>Gif generator</title>
         <link rel="icon" type="image/x-icon" href="/Images/favicon.ico">
-        <h1 style="font-size:60px;color:rgb(209, 209, 209);text-align:center;">This is a Gif generator</h1>
+        <h1 style="font-size:60px;color:rgb(148, 148, 148);text-align:center;">This is a Gif generator</h1>
         <hr>
         <script src="basic_giphy_site.js"></script>
     </head>
     <body style="background-attachment: fixed;background-size:100% 100%;background-repeat: no-repeat;background-image: url(https://s1.qwant.com/thumbr/0x380/3/e/51272a6282f6947ff46ddbe695712c9ad2f4a33cf94c80bdf70bf4ec3df6f8/thumb-1920-432119.jpg?u=https%3A%2F%2Fimages5.alphacoders.com%2F432%2Fthumb-1920-432119.jpg&q=0&b=1&p=0&a=0);text-align:center;border:2px solid black;">
         <img id="giphy" src="https://media2.giphy.com/media/gQrcsPUL4DyV0Zvw4I/200w.gif?cid=65b775ee58d8464663510abbe2ba07a831d49390775cbe23&rid=200w.gif&ct=g" alt="Giphy">
         <button onclick="getGiphy()">Get Gif</button>
+        <p><button onclick="clickCounter()" type="button">Click me!</button></p>
+<div id="result"></div>
+<p>Click the button to see the counter increase.</p>
+<p>Close the browser tab (or window), and try again, and the counter is reset.</p>
     </body>
 </html>
 
